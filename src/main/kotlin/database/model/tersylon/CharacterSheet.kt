@@ -1,7 +1,9 @@
-package com.example.database.entities.tersylon
+package com.example.database.model.tersylon
 
-import com.example.database.entities.MetadataTable
-import org.jetbrains.exposed.v1.core.dao.id.IntIdTable
+import com.example.database.model.MetadataTable
+import com.example.database.entities.tersylon.Prodigy
+import com.example.database.entities.tersylon.Race
+import org.jetbrains.exposed.v1.core.Table
 
 object CharacterSheet: MetadataTable("character_sheet") {
     val race = reference("race", Race)
@@ -10,9 +12,11 @@ object CharacterSheet: MetadataTable("character_sheet") {
     val type = enumeration("type", CharacterSheetType::class)
 }
 
-object CharacterSheetProdigy: IntIdTable("character_sheet_prodigy") {
+object CharacterSheetProdigy: Table("character_sheet_prodigy") {
     val prodigy = reference("prodigy", Prodigy)
     val character_sheet = reference("character_sheet", CharacterSheet)
+
+    override val primaryKey = PrimaryKey(prodigy, character_sheet)
 
     init {
         uniqueIndex(prodigy, character_sheet)

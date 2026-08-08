@@ -16,6 +16,7 @@ fun configureRaceEndpoints(routing: Routing) {
         route("/new"){
             get("/template") {
                 val energies = getAllEnergies().map { it.toDTO() }
+                call.response.headers.append("Content-Type", "application/json")
                 call.respondText(Json.encodeToString(energies))
             }
         }
