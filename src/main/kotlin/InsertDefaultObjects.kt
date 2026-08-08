@@ -1,16 +1,13 @@
 package com.example
 
-import com.example.database.dao.EnergyDao
-import com.example.database.dao.SkillDao
-import com.example.database.model.tersylon.Energy
+import com.example.database.dao.tersylon.EnergyDao
+import com.example.database.dao.tersylon.SkillDao
 import com.example.database.tersylonSchema
 import org.jetbrains.exposed.v1.core.dao.id.EntityID
-import org.jetbrains.exposed.v1.dao.Entity
 import org.jetbrains.exposed.v1.jdbc.Database
 import org.jetbrains.exposed.v1.jdbc.SchemaUtils
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import java.lang.System
-import java.util.UUID
 import kotlin.collections.listOf
 import kotlin.uuid.Uuid
 

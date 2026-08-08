@@ -47,6 +47,3 @@ fun configureRaceEndpoints(routing: Routing) {
         }
     }
 }
-
-@Serializable
-data class Race(val name: String, val description: String)

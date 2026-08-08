@@ -1,9 +1,9 @@
 package com.example.database.model.tersylon
 
 import com.example.database.model.MetadataTable
-import com.example.database.entities.tersylon.Prodigy
 import com.example.database.entities.tersylon.Race
 import org.jetbrains.exposed.v1.core.Table
+import org.jetbrains.exposed.v1.core.dao.id.CompositeIdTable
 
 object CharacterSheet: MetadataTable("character_sheet") {
     val race = reference("race", Race)
@@ -12,7 +12,7 @@ object CharacterSheet: MetadataTable("character_sheet") {
     val type = enumeration("type", CharacterSheetType::class)
 }
 
-object CharacterSheetProdigy: Table("character_sheet_prodigy") {
+object CharacterSheetProdigy: CompositeIdTable("character_sheet_prodigy") {
     val prodigy = reference("prodigy", Prodigy)
     val character_sheet = reference("character_sheet", CharacterSheet)
 

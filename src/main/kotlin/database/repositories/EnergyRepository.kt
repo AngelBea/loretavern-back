@@ -1,6 +1,6 @@
 package com.example.database.repositories
 
-import com.example.database.dao.EnergyDao
+import com.example.database.dao.tersylon.EnergyDao
 import com.example.database.tersylonSchema
 import org.jetbrains.exposed.v1.jdbc.SchemaUtils
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction

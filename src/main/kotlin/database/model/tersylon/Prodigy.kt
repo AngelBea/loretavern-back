@@ -1,12 +1,13 @@
-package com.example.database.entities.tersylon
+package com.example.database.model.tersylon
+
+import com.example.database.entities.tersylon.Race
 import com.example.database.model.MetadataTable
 import org.jetbrains.exposed.v1.core.Table
+import org.jetbrains.exposed.v1.core.dao.id.CompositeIdTable
 
-object Prodigy: MetadataTable("prodigy") {
-    val damage = integer("damage")
-}
+object Prodigy: MetadataTable("prodigy")
 
-object ProdigyRace: Table("prodigy_race") {
+object ProdigyRace: CompositeIdTable("prodigy_race") {
     val prodigy = reference("prodigy", Prodigy)
     val race = reference("race", Race)
 
@@ -17,7 +18,7 @@ object ProdigyRace: Table("prodigy_race") {
     }
 }
 
-object ProdigySubrace: Table("prodigy_subrace") {
+object ProdigySubrace: CompositeIdTable("prodigy_subrace") {
     val prodigy = reference("prodigy", Prodigy)
     val subrace = reference("subrace", Race)
 

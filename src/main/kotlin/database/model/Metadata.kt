@@ -21,4 +21,5 @@ abstract class MetadataTable(tableName: String): UuidTable(tableName, uuidVersio
     val thumbnail = text("thumbnail").nullable()
     val isPublic = bool("is_public").default(true)
     val image = text("image").nullable()
+    val icon = text("icon").nullable()
 }
