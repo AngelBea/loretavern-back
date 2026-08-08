@@ -1,0 +1,56 @@
+# ==========================================
+# Entorno, Variables de Entorno y Secretos
+# ==========================================
+# Ficheros de entorno y variables locales
+.env
+.env.*
+*.private.env.*
+!.env.example
+!.env.template
+
+# Propiedades locales y configuración sensible de Ktor
+local.properties
+application-local.conf
+application-local.yaml
+application-local.json
+application-dev.conf
+application-dev.yaml
+
+# ==========================================
+# Build & Gradle Artifacts
+# ==========================================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Archivos ejecutables generados
+*.jar
+*.war
+*.ear
+*.nar
+
+# ==========================================
+# IntelliJ IDEA (.idea)
+# ==========================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Registros (Logs)
+*.log
+logs/
+
+# ==========================================
+# OS
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

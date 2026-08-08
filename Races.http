@@ -1,0 +1,7 @@
+### Get new test
+GET {{baseUrl}}/v1/races/new
+
+### Get Race form template
+GET {{baseUrl}}/v1/races/new/template
+
+###
