@@ -2,10 +2,14 @@ package com.example.database.model.tersylon
 
 import com.example.database.entities.tersylon.Race
 import com.example.database.model.MetadataTable
-import org.jetbrains.exposed.v1.core.Table
 import org.jetbrains.exposed.v1.core.dao.id.CompositeIdTable
 
-object Prodigy: MetadataTable("prodigy")
+object Prodigy: MetadataTable("prodigy"){
+    val energy = reference("energy", Energy)
+    val skill = reference("skill", Skill)
+    val minimumSkillLevel = integer("minimum_skill_level")
+    val type = enumeration("type", ProdigyType::class)
+}
 
 object ProdigyRace: CompositeIdTable("prodigy_race") {
     val prodigy = reference("prodigy", Prodigy)
@@ -27,4 +31,9 @@ object ProdigySubrace: CompositeIdTable("prodigy_subrace") {
     init {
         uniqueIndex(prodigy, subrace)
     }
+}
+
+enum class ProdigyType {
+    PASSIVE,
+    ACTIVE
 }

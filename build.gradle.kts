@@ -33,6 +33,8 @@ dependencies {
     implementation(libs.exposed.r2dbc)
     implementation(libs.exposed.jdbc)
     implementation(libs.exposed.datetime)
+    implementation(libs.exposed.migrations.core)
+    implementation(libs.exposed.migrations.jdbc)
     implementation(libs.datetimes)
     implementation(libs.h2database.h2)
     implementation(libs.h2database.r2dbc)

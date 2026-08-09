@@ -3,6 +3,7 @@ package com.example.database.dao.tersylon
 import com.example.database.entities.tersylon.Race
 import com.example.database.model.tersylon.RaceEnergy
 import com.example.database.model.tersylon.RaceSkill
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.v1.core.dao.id.EntityID
 import org.jetbrains.exposed.v1.dao.UuidEntity
 import org.jetbrains.exposed.v1.dao.UuidEntityClass
@@ -21,7 +22,7 @@ class RaceParentDao(id: EntityID<Uuid>): RaceDao(id){
     val energies by RaceEnergyDao referrersOn RaceEnergy.race
     val skills by RaceSkillDao referrersOn RaceSkill.race
 
-    fun toDto(): RaceDTO = RaceDTO(id.value, name, slug, description, subraces.map { it.toDto() }, energies.map { it.toDTO() }, skills.map { it.toDTO() })
+    fun toDto(): RaceDTO = RaceDTO(id.value, name, slug, energies.map { it.toDTO() }, skills.map { it.toDTO() }, description, subraces.map { it.toDto() })
 }
 
 class SubraceDao(id: EntityID<Uuid>): RaceDao(id){
@@ -29,7 +30,7 @@ class SubraceDao(id: EntityID<Uuid>): RaceDao(id){
     val parentRace by RaceParentDao optionalReferencedOn Race.parentRace
     val skills by RaceSkillDao referrersOn RaceSkill.race
 
-    fun toDto(): RaceDTO = RaceDTO(id.value, name, slug, description, null, parentRace?.energies?.map { it.toDTO() } ?: emptyList(), skills.map { it.toDTO() })
+    fun toDto(): RaceDTO = RaceDTO(id.value, name, slug, parentRace?.energies?.map { it.toDTO() } ?: emptyList(), skills.map { it.toDTO() }, description)
 }
-
-data class RaceDTO (val id: Uuid, val name: String, val slug: String, val description: String?, val subraces: List<RaceDTO>?, val energies: List<EnergyDTO>, val skills: List<SkillDTO>)
+@Serializable
+data class RaceDTO (val id: Uuid?, val name: String, val slug: String, val energies: List<EnergyDTO>, val skills: List<SkillDTO>, val description: String? = null, val subraces: List<RaceDTO>? = null)
