@@ -20,7 +20,7 @@ class SkillDao(id: EntityID<Uuid>): UuidEntity(id) {
     var description by Skill.description
     var slug by Skill.slug
 
-    fun toDTO(): SkillDTO = SkillDTO(id.value, energyId.value, name, description, slug)
+    fun toDTO(): SkillDTO = SkillDTO(id.value, energyId.value, name, description, slug, isMarked = false)
 }
 
 class RaceSkillDao(id: EntityID<CompositeID>): CompositeEntity(id){
@@ -35,4 +35,4 @@ class RaceSkillDao(id: EntityID<CompositeID>): CompositeEntity(id){
 }
 
 @Serializable
-data class SkillDTO(val id: Uuid, val energy: Uuid, val name: String, val description: String?, val slug: String, val isMarked: Boolean? = null, val value: Int? = null)
+data class SkillDTO(val id: Uuid, val energy: Uuid, val name: String, val description: String?, val slug: String, val isMarked: Boolean, val value: Int? = null)
